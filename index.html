@@ -19,7 +19,7 @@
         
         .header-info { text-align: center; margin-bottom: 20px; width: 100%; max-width: 450px; }
         .header-info h1 { color: var(--text-bright); font-size: 1.4rem; margin: 0 0 10px 0; }
-        .btn-link { display: inline-block; background: var(--accent-blue); color: var(--bg-color); padding: 10px 15px; border-radius: 8px; text-decoration: none; font-weight: bold; margin: 10px 0; font-size: 0.9rem; }
+        .btn-link { display: inline-block; background: var(--accent-blue); color: var(--bg-color); padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; margin: 10px 0; font-size: 0.9rem; border: none; cursor: pointer; }
 
         .accordion { width: 100%; max-width: 450px; display: flex; flex-direction: column; gap: 10px; }
         .step-item { background: var(--card-bg); border: 1px solid rgba(88, 166, 255, 0.2); border-radius: 12px; overflow: hidden; }
@@ -31,14 +31,14 @@
         .step-item.active .step-content { max-height: 1000px; padding-bottom: 20px; }
         
         .step-description { padding: 0 15px 10px 15px; font-size: 0.9rem; line-height: 1.4; text-align: center; }
-        .guide-image { width: 90%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .guide-image { width: 95%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
     </style>
 </head>
 <body>
 
 <div class="header-info">
     <h1>Internet Optimierung</h1>
-    <a href="https://www.fast.com" target="_blank" class="btn-link">➔ Speed Test starten</a>
+    <a href="https://www.fast.com" class="btn-link">➔ Speed Test starten</a>
 </div>
 
 <div class="accordion">
@@ -54,7 +54,6 @@
         <div class="step-header"><span class="step-title">2. eSIM Kompatibilität</span><span>▼</span></div>
         <div class="step-content">
             <p class="step-description">Prüfen, ob dein Gerät eSIM unterstützt.</p>
-            <a href="https://www.google.com/search?q=eSIM+fähige+Smartphones+Liste" target="_blank" class="btn-link">Geräteliste prüfen</a>
             <img src="Bilder/IMG_4424.png" class="guide-image">
         </div>
     </div>
@@ -62,8 +61,8 @@
     <div class="step-item" onclick="toggleStep(this)">
         <div class="step-header"><span class="step-title">3. eSIM Aktivierung</span><span>▼</span></div>
         <div class="step-content">
-            <p class="step-description">Online-Kauf und direkte Freischaltung.</p>
-            <a href="https://www.o2-freikarte.de" target="_blank" class="btn-link">eSIM / SIM bestellen</a>
+            <p class="step-description">Ägyptische eSIM online kaufen und aktivieren.</p>
+            <a href="https://www.orange.eg/en/e-sim" class="btn-link">Orange Egypt eSIM</a>
             <img src="Bilder/IMG_4425.png" class="guide-image">
         </div>
     </div>
@@ -71,8 +70,8 @@
     <div class="step-item" onclick="toggleStep(this)">
         <div class="step-header"><span class="step-title">4. Physische SIM & Vergleich</span><span>▼</span></div>
         <div class="step-content">
-            <p class="step-description">Bestellung und Speed-Vergleich der Anbieter.</p>
-            <a href="https://www.telekom.de/mobilfunk/tarife/magentamobil-prepaid" target="_blank" class="btn-link">Alternative SIM bestellen</a>
+            <p class="step-description">Alternative SIM-Karten vor Ort oder online bestellen.</p>
+            <a href="https://www.vodafone.com.eg/en/home" class="btn-link">Vodafone Egypt</a>
             <img src="Bilder/IMG_4426.png" class="guide-image">
         </div>
     </div>
