@@ -9,6 +9,8 @@
             --bg-color: #0a0e14;
             --card-bg: #161b22;
             --accent-blue: #58a6ff;
+            --vodafone-red: #e60000;
+            --telekom-magenta: #e20074;
             --text-main: #adbac7;
             --text-bright: #ffffff;
             --transition-speed: 0.5s;
@@ -19,7 +21,8 @@
         
         .header-info { text-align: center; margin-bottom: 20px; width: 100%; max-width: 450px; }
         .header-info h1 { color: var(--text-bright); font-size: 1.4rem; margin: 0 0 10px 0; }
-        .btn-link { display: inline-block; background: var(--accent-blue); color: var(--bg-color); padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; margin: 10px 0; font-size: 0.9rem; border: none; cursor: pointer; }
+        
+        .btn-speed { display: inline-block; background: var(--accent-blue); color: #000; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-bottom: 10px; }
 
         .accordion { width: 100%; max-width: 450px; display: flex; flex-direction: column; gap: 10px; }
         .step-item { background: var(--card-bg); border: 1px solid rgba(88, 166, 255, 0.2); border-radius: 12px; overflow: hidden; }
@@ -28,24 +31,29 @@
         .step-title { font-weight: bold; color: var(--accent-blue); }
         
         .step-content { max-height: 0; overflow: hidden; transition: max-height var(--transition-speed) var(--ease); display: flex; flex-direction: column; align-items: center; }
-        .step-item.active .step-content { max-height: 1000px; padding-bottom: 20px; }
+        .step-item.active .step-content { max-height: 1200px; padding-bottom: 20px; }
         
         .step-description { padding: 0 15px 10px 15px; font-size: 0.9rem; line-height: 1.4; text-align: center; }
-        .guide-image { width: 95%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .guide-image { width: 95%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); margin-top: 10px; }
+
+        .btn-row { display: flex; width: 95%; gap: 10px; margin-bottom: 5px; }
+        .btn-provider { flex: 1; padding: 12px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.85rem; text-align: center; color: white; border: none; }
+        .voda { background-color: var(--vodafone-red); }
+        .tele { background-color: var(--telekom-magenta); }
     </style>
 </head>
 <body>
 
 <div class="header-info">
     <h1>Internet Optimierung</h1>
-    <a href="https://www.fast.com" class="btn-link">➔ Speed Test starten</a>
+    <a href="https://www.fast.com" class="btn-speed">➔ Speed Test starten</a>
 </div>
 
 <div class="accordion">
     <div class="step-item active" onclick="toggleStep(this)">
         <div class="step-header"><span class="step-title">1. Haus-WLAN Check</span><span>▼</span></div>
         <div class="step-content">
-            <p class="step-description">Basisgeschwindigkeit direkt am Router messen.</p>
+            <p class="step-description">Basisgeschwindigkeit am Router messen.</p>
             <img src="Bilder/IMG_4428.png" class="guide-image">
         </div>
     </div>
@@ -53,7 +61,7 @@
     <div class="step-item" onclick="toggleStep(this)">
         <div class="step-header"><span class="step-title">2. eSIM Kompatibilität</span><span>▼</span></div>
         <div class="step-content">
-            <p class="step-description">Prüfen, ob dein Gerät eSIM unterstützt.</p>
+            <p class="step-description">Hardware auf eSIM-Fähigkeit prüfen.</p>
             <img src="Bilder/IMG_4424.png" class="guide-image">
         </div>
     </div>
@@ -61,8 +69,10 @@
     <div class="step-item" onclick="toggleStep(this)">
         <div class="step-header"><span class="step-title">3. eSIM Aktivierung</span><span>▼</span></div>
         <div class="step-content">
-            <p class="step-description">Ägyptische eSIM online kaufen und aktivieren.</p>
-            <a href="https://www.orange.eg/en/e-sim" class="btn-link">Orange Egypt eSIM</a>
+            <div class="btn-row">
+                <a href="https://www.vodafone.com.eg/en/home" class="btn-provider voda">Vodafone eSIM</a>
+                <a href="https://www.telekom.de/mobilfunk/tarife/magentamobil-prepaid" class="btn-provider tele">WE / Telekom eSIM</a>
+            </div>
             <img src="Bilder/IMG_4425.png" class="guide-image">
         </div>
     </div>
@@ -70,8 +80,10 @@
     <div class="step-item" onclick="toggleStep(this)">
         <div class="step-header"><span class="step-title">4. Physische SIM & Vergleich</span><span>▼</span></div>
         <div class="step-content">
-            <p class="step-description">Alternative SIM-Karten vor Ort oder online bestellen.</p>
-            <a href="https://www.vodafone.com.eg/en/home" class="btn-link">Vodafone Egypt</a>
+            <div class="btn-row">
+                <a href="https://www.vodafone.com.eg/en/home" class="btn-provider voda">Vodafone SIM</a>
+                <a href="https://www.telekom.de/mobilfunk/tarife/magentamobil-prepaid" class="btn-provider tele">WE / Telekom SIM</a>
+            </div>
             <img src="Bilder/IMG_4426.png" class="guide-image">
         </div>
     </div>
@@ -79,7 +91,7 @@
     <div class="step-item" onclick="toggleStep(this)">
         <div class="step-header"><span class="step-title">5. Router-Setup</span><span>▼</span></div>
         <div class="step-content">
-            <p class="step-description">Mobilen Router optimal platzieren.</p>
+            <p class="step-description">Platzierung des mobilen WLAN-Routers.</p>
             <img src="Bilder/IMG_4427.png" class="guide-image">
         </div>
     </div>
