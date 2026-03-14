@@ -21,23 +21,23 @@
         
         .header-info { text-align: center; margin-bottom: 20px; width: 100%; max-width: 450px; }
         .header-info h1 { color: var(--text-bright); font-size: 1.4rem; margin: 0 0 10px 0; }
-        
-        .btn-speed { display: inline-block; background: var(--accent-blue); color: #000; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-bottom: 10px; }
+        .speedtest-link { display: inline-block; background: var(--accent-blue); color: var(--bg-color); padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-top: 5px; }
 
         .accordion { width: 100%; max-width: 450px; display: flex; flex-direction: column; gap: 10px; }
         .step-item { background: var(--card-bg); border: 1px solid rgba(88, 166, 255, 0.2); border-radius: 12px; overflow: hidden; }
         
-        .step-header { padding: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .step-header { padding: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; }
+        .step-header:hover { background: rgba(88, 166, 255, 0.1); }
         .step-title { font-weight: bold; color: var(--accent-blue); }
         
         .step-content { max-height: 0; overflow: hidden; transition: max-height var(--transition-speed) var(--ease); display: flex; flex-direction: column; align-items: center; }
-        .step-item.active .step-content { max-height: 1200px; padding-bottom: 20px; }
+        .step-item.active .step-content { max-height: 1000px; padding-bottom: 15px; }
         
         .step-description { padding: 0 15px 10px 15px; font-size: 0.9rem; line-height: 1.4; text-align: center; }
-        .guide-image { width: 95%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); margin-top: 10px; }
+        .guide-image { width: 90%; margin: 0 auto; border-radius: 8px; display: block; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
 
-        .btn-row { display: flex; width: 95%; gap: 10px; margin-bottom: 5px; }
-        .btn-provider { flex: 1; padding: 12px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.85rem; text-align: center; color: white; border: none; }
+        .btn-row { display: flex; width: 90%; gap: 10px; margin-bottom: 10px; }
+        .btn-provider { flex: 1; padding: 10px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.85rem; text-align: center; color: white; }
         .voda { background-color: var(--vodafone-red); }
         .tele { background-color: var(--telekom-magenta); }
     </style>
@@ -46,14 +46,14 @@
 
 <div class="header-info">
     <h1>Internet Optimierung</h1>
-    <a href="https://www.fast.com" class="btn-speed">➔ Speed Test starten</a>
+    <a href="https://www.fast.com" class="speedtest-link">➔ Speed Test starten</a>
 </div>
 
 <div class="accordion">
     <div class="step-item active" onclick="toggleStep(this)">
         <div class="step-header"><span class="step-title">1. Haus-WLAN Check</span><span>▼</span></div>
         <div class="step-content">
-            <p class="step-description">Basisgeschwindigkeit am Router messen.</p>
+            <p class="step-description">Basisgeschwindigkeit messen</p>
             <img src="Bilder/IMG_4428.png" class="guide-image">
         </div>
     </div>
@@ -61,7 +61,7 @@
     <div class="step-item" onclick="toggleStep(this)">
         <div class="step-header"><span class="step-title">2. eSIM Kompatibilität</span><span>▼</span></div>
         <div class="step-content">
-            <p class="step-description">Hardware auf eSIM-Fähigkeit prüfen.</p>
+            <p class="step-description">Checke in den Einstellungen, ob dein Smartphone eSIM-fähig ist.</p>
             <img src="Bilder/IMG_4424.png" class="guide-image">
         </div>
     </div>
@@ -70,8 +70,8 @@
         <div class="step-header"><span class="step-title">3. eSIM Aktivierung</span><span>▼</span></div>
         <div class="step-content">
             <div class="btn-row">
-                <a href="https://www.vodafone.com.eg/en/home" class="btn-provider voda">Vodafone eSIM</a>
-                <a href="https://www.telekom.de/mobilfunk/tarife/magentamobil-prepaid" class="btn-provider tele">WE / Telekom eSIM</a>
+                <a href="https://www.vodafone.com.eg/en/home" class="btn-provider voda">Vodafone Egypt</a>
+                <a href="https://te.eg/sl/esim" class="btn-provider tele">WE (Telecom Egypt)</a>
             </div>
             <img src="Bilder/IMG_4425.png" class="guide-image">
         </div>
@@ -81,8 +81,8 @@
         <div class="step-header"><span class="step-title">4. Physische SIM & Vergleich</span><span>▼</span></div>
         <div class="step-content">
             <div class="btn-row">
-                <a href="https://www.vodafone.com.eg/en/home" class="btn-provider voda">Vodafone SIM</a>
-                <a href="https://www.telekom.de/mobilfunk/tarife/magentamobil-prepaid" class="btn-provider tele">WE / Telekom SIM</a>
+                <a href="https://www.vodafone.com.eg/en/home" class="btn-provider voda">Vodafone Egypt</a>
+                <a href="https://te.eg/wps/portal/te/Personal" class="btn-provider tele">WE (Telecom Egypt)</a>
             </div>
             <img src="Bilder/IMG_4426.png" class="guide-image">
         </div>
@@ -91,7 +91,7 @@
     <div class="step-item" onclick="toggleStep(this)">
         <div class="step-header"><span class="step-title">5. Router-Setup</span><span>▼</span></div>
         <div class="step-content">
-            <p class="step-description">Platzierung des mobilen WLAN-Routers.</p>
+            <p class="step-description">Mobilen Router optimal im Zimmer platzieren und benutzen.</p>
             <img src="Bilder/IMG_4427.png" class="guide-image">
         </div>
     </div>
