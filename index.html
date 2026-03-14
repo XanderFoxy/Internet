@@ -10,51 +10,87 @@
             --card-bg: #161b22;
             --accent-blue: #58a6ff;
             --text-main: #adbac7;
-            --transition-speed: 0.6s;
+            --text-bright: #ffffff;
+            --transition-speed: 0.5s;
             --ease: cubic-bezier(0.23, 1, 0.32, 1);
         }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { background-color: var(--bg-color); color: var(--text-main); font-family: sans-serif; margin: 0; overflow: hidden; display: flex; justify-content: center; align-items: center; height: 100vh; }
-        .container { width: 100%; max-width: 450px; height: 100%; position: relative; perspective: 1000px; }
-        .nav-menu { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); z-index: 100; display: flex; flex-direction: column; gap: 12px; }
-        .nav-item { width: 45px; height: 45px; background: var(--card-bg); border: 1px solid var(--accent-blue); border-radius: 8px; display: flex; justify-content: center; align-items: center; color: var(--accent-blue); font-weight: bold; cursor: pointer; transition: all 0.3s var(--ease); }
-        .nav-item.active { background: var(--accent-blue); color: var(--bg-color); transform: scale(1.1) translateX(5px); }
-        .content-stack { width: 100%; height: 100%; position: relative; display: flex; justify-content: center; align-items: center; padding-left: 70px; padding-right: 20px; }
-        .guide-card { position: absolute; width: calc(100% - 90px); aspect-ratio: 1 / 1; background: var(--card-bg); border-radius: 16px; overflow: hidden; opacity: 0; transform: rotateY(-30deg) translateX(100%) scale(0.8); transition: transform var(--transition-speed) var(--ease), opacity var(--transition-speed) var(--ease); pointer-events: none; }
-        .guide-card.active { opacity: 1; transform: rotateY(0deg) translateX(0) scale(1); pointer-events: auto; z-index: 10; }
-        .guide-card.prev { opacity: 0; transform: rotateY(30deg) translateX(-100%) scale(0.8); z-index: 1; }
-        .guide-image { width: 100%; height: 100%; object-fit: cover; display: block; }
+        body { background-color: var(--bg-color); color: var(--text-main); font-family: sans-serif; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        
+        .header-info { text-align: center; margin-bottom: 20px; width: 100%; max-width: 450px; }
+        .header-info h1 { color: var(--text-bright); font-size: 1.4rem; margin: 0 0 10px 0; }
+        .speedtest-link { display: inline-block; background: var(--accent-blue); color: var(--bg-color); padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-top: 5px; }
+
+        .accordion { width: 100%; max-width: 450px; display: flex; flex-direction: column; gap: 10px; }
+        .step-item { background: var(--card-bg); border: 1px solid rgba(88, 166, 255, 0.2); border-radius: 12px; overflow: hidden; }
+        
+        .step-header { padding: 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; }
+        .step-header:hover { background: rgba(88, 166, 255, 0.1); }
+        .step-title { font-weight: bold; color: var(--accent-blue); }
+        
+        .step-content { max-height: 0; overflow: hidden; transition: max-height var(--transition-speed) var(--ease); display: flex; flex-direction: column; }
+        .step-item.active .step-content { max-height: 600px; padding-bottom: 15px; }
+        
+        .step-description { padding: 0 15px 10px 15px; font-size: 0.9rem; line-height: 1.4; }
+        .guide-image { width: 90%; margin: 0 auto; border-radius: 8px; display: block; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
     </style>
 </head>
 <body>
-<div class="container">
-    <div class="nav-menu">
-        <div class="nav-item active" onclick="showCard(1)">1</div>
-        <div class="nav-item" onclick="showCard(2)">2</div>
-        <div class="nav-item" onclick="showCard(3)">3</div>
-        <div class="nav-item" onclick="showCard(4)">4</div>
-        <div class="nav-item" onclick="showCard(5)">5</div>
+
+<div class="header-info">
+    <h1>Internet Optimierung</h1>
+    <a href="https://www.fast.com" target="_blank" class="speedtest-link">➔ Speed Test starten</a>
+</div>
+
+<div class="accordion">
+    <div class="step-item active" onclick="toggleStep(this)">
+        <div class="step-header"><span class="step-title">1. Haus-WLAN Check</span><span>▼</span></div>
+        <div class="step-content">
+            <p class="step-description">Prüfe die Basisgeschwindigkeit direkt an deinem Router im Zimmer.</p>
+            <img src="Bilder/IMG_4428.png" class="guide-image">
+        </div>
     </div>
-    <div class="content-stack">
-        <div class="guide-card active" id="card-1"><img src="Bilder/IMG_4428.png" class="guide-image"></div>
-        <div class="guide-card" id="card-2"><img src="Bilder/IMG_4424.png" class="guide-image"></div>
-        <div class="guide-card" id="card-3"><img src="Bilder/IMG_4425.png" class="guide-image"></div>
-        <div class="guide-card" id="card-4"><img src="Bilder/IMG_4426.png" class="guide-image"></div>
-        <div class="guide-card" id="card-5"><img src="Bilder/IMG_4427.png" class="guide-image"></div>
+
+    <div class="step-item" onclick="toggleStep(this)">
+        <div class="step-header"><span class="step-title">2. eSIM Kompatibilität</span><span>▼</span></div>
+        <div class="step-content">
+            <p class="step-description">Checke in den Einstellungen, ob dein Smartphone eSIM-fähig ist.</p>
+            <img src="Bilder/IMG_4424.png" class="guide-image">
+        </div>
+    </div>
+
+    <div class="step-item" onclick="toggleStep(this)">
+        <div class="step-header"><span class="step-title">3. eSIM Aktivierung</span><span>▼</span></div>
+        <div class="step-content">
+            <p class="step-description">Folge dieser Anleitung zum Online-Kauf und zur sofortigen Freischaltung.</p>
+            <img src="Bilder/IMG_4425.png" class="guide-image">
+        </div>
+    </div>
+
+    <div class="step-item" onclick="toggleStep(this)">
+        <div class="step-header"><span class="step-title">4. Physische SIM & Vergleich</span><span>▼</span></div>
+        <div class="step-content">
+            <p class="step-description">Bestellung der Karte und Speed-Vergleich der Anbieter.</p>
+            <img src="Bilder/IMG_4426.png" class="guide-image">
+        </div>
+    </div>
+
+    <div class="step-item" onclick="toggleStep(this)">
+        <div class="step-header"><span class="step-title">5. Router-Setup</span><span>▼</span></div>
+        <div class="step-content">
+            <p class="step-description">Mobilen Router optimal im Zimmer platzieren und verbinden.</p>
+            <img src="Bilder/IMG_4427.png" class="guide-image">
+        </div>
     </div>
 </div>
+
 <script>
-    let currentActive = 1;
-    function showCard(id) {
-        if (id === currentActive) return;
-        document.querySelectorAll('.nav-item').forEach((item, i) => item.classList.toggle('active', i + 1 === id));
-        document.querySelectorAll('.guide-card').forEach((card, i) => {
-            card.classList.remove('active', 'prev');
-            if (i + 1 === id) card.classList.add('active');
-            else if (i + 1 === currentActive) card.classList.add('prev');
-        });
-        currentActive = id;
+    function toggleStep(element) {
+        const isActive = element.classList.contains('active');
+        document.querySelectorAll('.step-item').forEach(item => item.classList.remove('active'));
+        if (!isActive) element.classList.add('active');
     }
 </script>
+
 </body>
 </html>
