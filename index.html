@@ -10,154 +10,23 @@
             --card-bg: #161b22;
             --accent-blue: #58a6ff;
             --text-main: #adbac7;
-            --text-bright: #ffffff;
             --transition-speed: 0.6s;
             --ease: cubic-bezier(0.23, 1, 0.32, 1);
         }
-
-        * {
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 450px;
-            height: 100%;
-            position: relative;
-            perspective: 1000px;
-        }
-
-        /* Navigations-ID-Cards an der Seite */
-        .nav-menu {
-            position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 100;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .nav-item {
-            width: 45px;
-            height: 45px;
-            background: var(--card-bg);
-            border: 1px solid var(--accent-blue);
-            border-radius: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: var(--accent-blue);
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s var(--ease);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-
-        .nav-item.active {
-            background: var(--accent-blue);
-            color: var(--bg-color);
-            transform: scale(1.1) translateX(5px);
-            box-shadow: 0 0 20px rgba(88, 166, 255, 0.4);
-        }
-
-        /* Card-Slider Mechanik */
-        .content-stack {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding-left: 70px; /* Platz für die Nav */
-            padding-right: 20px;
-        }
-
-        .guide-card {
-            position: absolute;
-            width: calc(100% - 90px);
-            aspect-ratio: 1 / 1;
-            background: var(--card-bg);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-            border: 1px solid rgba(255,255,255,0.05);
-            
-            /* Initial State: Eingeklappt/Unsichtbar */
-            opacity: 0;
-            transform: rotateY(-30deg) translateX(100%) scale(0.8);
-            transition: transform var(--transition-speed) var(--ease), 
-                        opacity var(--transition-speed) var(--ease);
-            pointer-events: none;
-        }
-
-        .guide-card.active {
-            opacity: 1;
-            transform: rotateY(0deg) translateX(0) scale(1);
-            pointer-events: auto;
-            z-index: 10;
-        }
-
-        .guide-card.prev {
-            opacity: 0;
-            transform: rotateY(30deg) translateX(-100%) scale(0.8);
-            z-index: 1;
-        }
-
-        .guide-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* Overlay Text (optional falls Bilder laden) */
-        .card-header {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 15px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.9));
-            color: white;
-            font-size: 0.9rem;
-            text-align: center;
-        }
-
-        /* Pulsierende Animation für Interaktion */
-        .hint {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.8rem;
-            color: var(--accent-blue);
-            opacity: 0.6;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.8; }
-        }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { background-color: var(--bg-color); color: var(--text-main); font-family: sans-serif; margin: 0; overflow: hidden; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .container { width: 100%; max-width: 450px; height: 100%; position: relative; perspective: 1000px; }
+        .nav-menu { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); z-index: 100; display: flex; flex-direction: column; gap: 12px; }
+        .nav-item { width: 45px; height: 45px; background: var(--card-bg); border: 1px solid var(--accent-blue); border-radius: 8px; display: flex; justify-content: center; align-items: center; color: var(--accent-blue); font-weight: bold; cursor: pointer; transition: all 0.3s var(--ease); }
+        .nav-item.active { background: var(--accent-blue); color: var(--bg-color); transform: scale(1.1) translateX(5px); }
+        .content-stack { width: 100%; height: 100%; position: relative; display: flex; justify-content: center; align-items: center; padding-left: 70px; padding-right: 20px; }
+        .guide-card { position: absolute; width: calc(100% - 90px); aspect-ratio: 1 / 1; background: var(--card-bg); border-radius: 16px; overflow: hidden; opacity: 0; transform: rotateY(-30deg) translateX(100%) scale(0.8); transition: transform var(--transition-speed) var(--ease), opacity var(--transition-speed) var(--ease); pointer-events: none; }
+        .guide-card.active { opacity: 1; transform: rotateY(0deg) translateX(0) scale(1); pointer-events: auto; z-index: 10; }
+        .guide-card.prev { opacity: 0; transform: rotateY(30deg) translateX(-100%) scale(0.8); z-index: 1; }
+        .guide-image { width: 100%; height: 100%; object-fit: cover; display: block; }
     </style>
 </head>
 <body>
-
 <div class="container">
     <div class="nav-menu">
         <div class="nav-item active" onclick="showCard(1)">1</div>
@@ -166,94 +35,26 @@
         <div class="nav-item" onclick="showCard(4)">4</div>
         <div class="nav-item" onclick="showCard(5)">5</div>
     </div>
-
     <div class="content-stack">
-        <div class="guide-card active" id="card-1">
-            <img src="bilder/1.png" alt="WLAN Test" class="guide-image">
-            <div class="card-header">1. Haus-WLAN Speed Test</div>
-        </div>
-
-        <div class="guide-card" id="card-2">
-            <img src="bilder/2.png" alt="eSIM Check" class="guide-image">
-            <div class="card-header">2. Hardware-Check: eSIM fähig?</div>
-        </div>
-
-        <div class="guide-card" id="card-3">
-            <img src="bilder/3.png" alt="eSIM Online" class="guide-image">
-            <div class="card-header">3. eSIM Online Kauf & Aktivierung</div>
-        </div>
-
-        <div class="guide-card" id="card-4">
-            <img src="bilder/4.png" alt="Physische SIM" class="guide-image">
-            <div class="card-header">4. Alternative: Physische SIM & Vergleich</div>
-        </div>
-
-        <div class="guide-card" id="card-5">
-            <img src="bilder/5.png" alt="Router Setup" class="guide-image">
-            <div class="card-header">5. Mobiler Router: Setup & Optimierung</div>
-        </div>
+        <div class="guide-card active" id="card-1"><img src="Bilder/IMG_4428.png" class="guide-image"></div>
+        <div class="guide-card" id="card-2"><img src="Bilder/IMG_4424.png" class="guide-image"></div>
+        <div class="guide-card" id="card-3"><img src="Bilder/IMG_4425.png" class="guide-image"></div>
+        <div class="guide-card" id="card-4"><img src="Bilder/IMG_4426.png" class="guide-image"></div>
+        <div class="guide-card" id="card-5"><img src="Bilder/IMG_4427.png" class="guide-image"></div>
     </div>
-
-    <div class="hint">Wähle eine ID-Karte links</div>
 </div>
-
 <script>
     let currentActive = 1;
-
     function showCard(id) {
         if (id === currentActive) return;
-
-        // Nav-Items aktualisieren
-        const navItems = document.querySelectorAll('.nav-item');
-        navItems.forEach((item, index) => {
-            item.classList.toggle('active', index + 1 === id);
-        });
-
-        // Cards aktualisieren
-        const cards = document.querySelectorAll('.guide-card');
-        cards.forEach((card, index) => {
-            const cardNumber = index + 1;
+        document.querySelectorAll('.nav-item').forEach((item, i) => item.classList.toggle('active', i + 1 === id));
+        document.querySelectorAll('.guide-card').forEach((card, i) => {
             card.classList.remove('active', 'prev');
-            
-            if (cardNumber === id) {
-                card.classList.add('active');
-            } else if (cardNumber === currentActive) {
-                card.classList.add('prev');
-            }
+            if (i + 1 === id) card.classList.add('active');
+            else if (i + 1 === currentActive) card.classList.add('prev');
         });
-
         currentActive = id;
-
-        // Haptisches Feedback (falls unterstützt)
-        if (window.navigator.vibrate) {
-            window.navigator.vibrate(10);
-        }
-    }
-
-    // Swipe Unterstützung
-    let touchstartY = 0;
-    let touchendY = 0;
-
-    document.addEventListener('touchstart', e => {
-        touchstartY = e.changedTouches[0].screenY;
-    });
-
-    document.addEventListener('touchend', e => {
-        touchendY = e.changedTouches[0].screenY;
-        handleGesture();
-    });
-
-    function handleGesture() {
-        if (touchendY < touchstartY - 50) {
-            // Swipe Up
-            if (currentActive < 5) showCard(currentActive + 1);
-        }
-        if (touchendY > touchstartY + 50) {
-            // Swipe Down
-            if (currentActive > 1) showCard(currentActive - 1);
-        }
     }
 </script>
-
 </body>
 </html>
